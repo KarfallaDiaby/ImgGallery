@@ -2,6 +2,7 @@ import React from 'react'
 import { format } from "date-fns"
 import { useState } from 'react';
 import SharePopup from './SharePopup';
+import FileSaver, { saveAs } from 'file-saver';
 
 export default function Articles({ id, urls, user, created_at, likes, links }) {
 
@@ -11,7 +12,7 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
   const handleDownload = async () => {
     try {
       // Récupérer l'image depuis son URL
-      const response = await fetch(links.download);
+      const response = await fetch(urls.full);
       const blob = await response.blob();
 
       // Créer une URL pour le blob
@@ -68,7 +69,9 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
           </div>
           <div className='flex justify-end items-center'>
             <span onClick={() => handleClick(user.name)} className='mr-6 text-4xl text-white cursor-pointer hover:text-[#77B0AA]'><ion-icon name="share-social"></ion-icon></span>
-            <span className='text-4xl text-white cursor-pointer hover:text-[#77B0AA]'><ion-icon name="download"></ion-icon></span>
+            <span onClick={() => {
+              FileSaver.saveAs(urls.full, "image.jpg")
+            }} className='text-4xl text-white cursor-pointer hover:text-[#77B0AA]'><ion-icon name="download"></ion-icon></span>
           </div>
         </div>
       </div>

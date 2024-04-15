@@ -1,12 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export default function SharePopup({valeur}) {
 
-    const [val, setVal] = useState();
-    useEffect(() => {
-      setVal(valeur)
-      console.log(val)
-    })
+    console.log(valeur)
 
   return (
     <dialog id="my_modal_2" className='rounded-lg p-6'>
@@ -126,10 +122,10 @@ export default function SharePopup({valeur}) {
               ></path>
             </svg>
 
-            <input class="w-full outline-none bg-transparent" type="text" placeholder="link" value={val}/>
+            <input class="w-full outline-none bg-transparent" type="text" placeholder="link" value={valeur}/>
 
             <button class="bg-indigo-500 text-white rounded text-sm py-2 px-5 mr-2 hover:bg-indigo-600">
-                {valeur}
+                Copy
             </button>
           </div>
         </div>
