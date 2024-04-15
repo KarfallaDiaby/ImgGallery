@@ -31,7 +31,7 @@ export default function GetImg() {
     <>  
         {loading ? (
           <div className='w-full flex justify-center'>
-            <div class="rounded-md h-12 w-12 border-4 border-t-4 border-blue-500 animate-spin absolute"></div>
+            <div class="rounded-md h-12 w-12 border-4 border-t-4 border-[#77B0AA] animate-spin absolute"></div>
           </div>
           
         ) : (

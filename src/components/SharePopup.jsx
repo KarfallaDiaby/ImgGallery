@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-export default function SharePopup() {
+export default function SharePopup({valeur}) {
+
+    const [val, setVal] = useState();
+    useEffect(() => {
+      setVal(valeur)
+      console.log(val)
+    })
+
   return (
-    <div class="min-h-screen bg-gray-800 flex items-center justify-center">
-      <div class="bg-gray-100 w-full mx-4 p-4 rounded-xl md:w-1/2 lg:w-1/3">
+    <dialog id="my_modal_2" className='rounded-lg p-6'>
+      <div class="">
         <div
           class="flex justify-between items center border-b border-gray-200 py-3"
         >
@@ -11,11 +18,14 @@ export default function SharePopup() {
             <p class="text-xl font-bold text-gray-800">Share Modal</p>
           </div>
 
-          <div
-            class="bg-gray-300 hover:bg-gray-500 cursor-pointer hover:text-gray-300 font-sans text-gray-500 w-8 h-8 flex items-center justify-center rounded-full"
-          >
-            x
-          </div>
+          <form method="dialog" className="modal-backdrop">
+            <button
+              class="bg-gray-300 hover:bg-gray-500 cursor-pointer hover:text-gray-300 font-sans text-gray-500 w-8 h-8 flex items-center justify-center rounded-full"
+            >
+              x
+            </button>
+          </form>
+          
         </div>
         <div class="my-4">
           <p class="text-sm">Share this link via</p>
@@ -116,14 +126,14 @@ export default function SharePopup() {
               ></path>
             </svg>
 
-            <input class="w-full outline-none bg-transparent" type="text" placeholder="link" value="https://boxicons.com/?query=link"/>
+            <input class="w-full outline-none bg-transparent" type="text" placeholder="link" value={val}/>
 
             <button class="bg-indigo-500 text-white rounded text-sm py-2 px-5 mr-2 hover:bg-indigo-600">
-                Copy
+                {valeur}
             </button>
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   )
 }
