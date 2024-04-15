@@ -60,7 +60,7 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
             </ul>
           </div>
           <div className='flex justify-end items-center'>
-            <span onClick={()=>{document.getElementById('my_modal_2').showModal()}} className='mr-6 text-4xl text-white cursor-pointer hover:text-[#77B0AA]'><ion-icon name="share-social"></ion-icon></span>
+            <span onClick={()=>{document.getElementById('my_modal_2').showModal(); console.log(links.download)}} className='mr-6 text-4xl text-white cursor-pointer hover:text-[#77B0AA]'><ion-icon name="share-social"></ion-icon></span>
             <span className='text-4xl text-white cursor-pointer hover:text-[#77B0AA]'><ion-icon name="download"></ion-icon></span>
           </div>
         </div>
