@@ -7,7 +7,7 @@ export default function Footer() {
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
         <div class="flex text-black text-3xl items-center">
-          <img className='w-16' src="src/assets/img/6531811.png" alt="" />
+          <img className='w-16' src="public/6531811.png" alt="" />
           <h1 className='ml-2'>ArtLib</h1>
         </div>
 

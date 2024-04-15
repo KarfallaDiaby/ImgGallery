@@ -6,7 +6,7 @@ export default function NavBar() {
         <nav>
             <div className='w-full flex justify-between items-center  text-[#939393] py-2 pl-5 border-b border-[#939393]'>
                 <div className='flex items-center w-[72%]'>
-                    <img className='w-12' src="src/assets/img/6531811.png" alt="" />
+                    <img className='w-12' src="public/6531811.png" alt="" />
                     <div className='w-full flex items-center ml-6 bg-[#E9E9E9] py-2 px-4 rounded-full '>
                         <span className='text-[16pt] mr-3'><ion-icon name="search-outline"></ion-icon></span>
                         <input className='bg-transparent text-[11pt] w-full outline-0 text-black' type="search" placeholder='Rechercher...'/>
