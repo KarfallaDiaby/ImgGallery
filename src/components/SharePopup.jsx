@@ -1,74 +1,9 @@
 import React from 'react'
-import { format } from "date-fns"
-import { useState } from 'react';
 
-export default function Articles({ id, urls, user, created_at, likes, links }) {
-
-  const [isOpenPopup, setIsOpenPopup] = useState(false);
-  const [ink, setInk] = useState();
-
-  const handleDownload = async () => {
-    try {
-      // Récupérer l'image depuis son URL
-      const response = await fetch(links.download);
-      const blob = await response.blob();
-
-      // Créer une URL pour le blob
-      const url = window.URL.createObjectURL(new Blob([blob]));
-
-      // Créer un élément <a> pour le téléchargement
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', imageName);
-
-      // Simuler un clic sur le lien pour démarrer le téléchargement
-      document.body.appendChild(link);
-      link.click();
-
-      // Nettoyer
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error('Erreur lors du téléchargement de l\'image:', error);
-    }
-  };
-
-
+export default function SharePopup() {
   return (
-    <>
-    <div>
-      <div class="w-full h-auto mx-[auto] my-[4%] rounded-lg group relative items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-        <div class="">
-          <img 
-            class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
-            src={urls.regular}
-            alt={user.username}
-          />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent group-hover:from-black/70 group-hover:via-black/60 group-hover:to-black/70"></div>
-        <div class="px-5 py-4 absolute inset-0 flex flex-col justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <div className='flex items-center'>
-            <img
-                src={user.profile_image.medium}
-                alt={user.username}
-                className="rounded-full mr-2 w-10 md:w-auto"
-            />
-            <ul>
-              <li className="text-white font-bold">{user.name}</li>
-              <li className="text-sm text-white opacity-80">
-                {format(new Date(created_at), "dd MMMM yyyy")}
-              </li>
-            </ul>
-          </div>
-          <div className='flex justify-end items-center'>
-            <span onClick={()=>{document.getElementById('my_modal_2').showModal()}} className='mr-6 text-4xl text-white cursor-pointer hover:text-[#77B0AA]'><ion-icon name="share-social"></ion-icon></span>
-            <span className='text-4xl text-white cursor-pointer hover:text-[#77B0AA]'><ion-icon name="download"></ion-icon></span>
-          </div>
-        </div>
-      </div>
-
-
-      <dialog id="my_modal_2" className='rounded-lg p-6'>
-      <div class="">
+    <div class="min-h-screen bg-gray-800 flex items-center justify-center">
+      <div class="bg-gray-100 w-full mx-4 p-4 rounded-xl md:w-1/2 lg:w-1/3">
         <div
           class="flex justify-between items center border-b border-gray-200 py-3"
         >
@@ -76,14 +11,11 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
             <p class="text-xl font-bold text-gray-800">Share Modal</p>
           </div>
 
-          <form method="dialog" className="modal-backdrop">
-            <button
-              class="bg-gray-300 hover:bg-gray-500 cursor-pointer hover:text-gray-300 font-sans text-gray-500 w-8 h-8 flex items-center justify-center rounded-full"
-            >
-              x
-            </button>
-          </form>
-          
+          <div
+            class="bg-gray-300 hover:bg-gray-500 cursor-pointer hover:text-gray-300 font-sans text-gray-500 w-8 h-8 flex items-center justify-center rounded-full"
+          >
+            x
+          </div>
         </div>
         <div class="my-4">
           <p class="text-sm">Share this link via</p>
@@ -184,7 +116,7 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
               ></path>
             </svg>
 
-            <input class="w-full outline-none bg-transparent" type="text" placeholder="link" value={ink}/>
+            <input class="w-full outline-none bg-transparent" type="text" placeholder="link" value="https://boxicons.com/?query=link"/>
 
             <button class="bg-indigo-500 text-white rounded text-sm py-2 px-5 mr-2 hover:bg-indigo-600">
                 Copy
@@ -192,8 +124,6 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
           </div>
         </div>
       </div>
-    </dialog>
     </div>
-    </>
   )
 }
