@@ -1,7 +1,41 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Logo from '../assets/img/6531811.png'
+import axios from 'axios';
+import GetImg from './GetImg';
 
 export default function NavBar() {
+
+    const searchInput = useRef(null)
+    const API_URL = "https://api.unsplash.com/search/photos"
+    const IMAGES_PER_PAGE = 20
+
+    const [img, setImg] = useState([])
+    const [totalPages, setTotalPages] = useState(0)
+
+    const fetchImages = async () => {
+        try{
+            const {data} = await axios.get(
+                `${API_URL}?query=${searchInput.current.value}&page=1&per_page=${IMAGES_PER_PAGE}&client_id=${import.meta.env.VITE_API_KEY}`
+            ) 
+            setImg(data.results)
+            setTotalPages(data.total_pages)
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          fetchImages()
+        }
+      };
+
+    const handleSelection = (selection) => {
+        searchInput.current.value = selection
+        fetchImages()
+    }
+
   return (
     <>
         <nav>
@@ -10,7 +44,7 @@ export default function NavBar() {
                     <img className='w-12' src={Logo} alt="" />
                     <div className='w-full flex items-center ml-6 bg-[#E9E9E9] py-2 px-4 rounded-full '>
                         <span className='text-[16pt] mr-3'><ion-icon name="search-outline"></ion-icon></span>
-                        <input className='bg-transparent text-[11pt] w-full outline-0 text-black' type="search" placeholder='Rechercher...'/>
+                        <input ref={searchInput} onKeyDown={handleKeyPress} className='bg-transparent text-[11pt] w-full outline-0 text-black' type="search" placeholder='Rechercher...'/>
                     </div>
                 </div>
                 <ul className='flex justify-center items-center text-[11pt]'>
@@ -23,14 +57,17 @@ export default function NavBar() {
                 </ul>
             </div>
             <ul className='flex justify-center items-center text-[11pt] font-semibold py-8'>
-                <li className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Branding</li>
-                <li className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Illustration</li>
-                <li className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Web design</li>
-                <li className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Accessoirs</li>
-                <li className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Typographie</li>
-                <li className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Manga</li>
+                <li onClick={() => handleSelection('Branding')} className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Branding</li>
+                <li onClick={() => handleSelection('Illustration')} className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Illustration</li>
+                <li onClick={() => handleSelection('Web design')} className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Web design</li>
+                <li onClick={() => handleSelection('Accessoires')} className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Accessoirs</li>
+                <li onClick={() => handleSelection('Typographie')} className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Typographie</li>
+                <li onClick={() => handleSelection('Manga')} className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>Manga</li>
             </ul>
         </nav>
+
+        <GetImg images={img}/>
     </>
   )
+
 }

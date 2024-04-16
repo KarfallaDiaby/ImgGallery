@@ -2,21 +2,21 @@ import React from 'react'
 import Articles from './Articles'
 import { useState, useEffect } from 'react'
 
-export default function GetImg() {
-    const [images, setImages] = useState([])
+export default function GetImg({images}) {
+    //const [images, setImages] = useState([])
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchImages = async () => {
             const response = await fetch(
-            `https://api.unsplash.com/photos?client_id=EfRDUo9VRhmNd3bzyYBB9uvgd77e2hJc9dArA8eWgpo`
+            `https://api.unsplash.com/photos?client_id=${import.meta.env.VITE_API_KEY}`
             )
             const data = await response.json()
             console.log(data)
             setImages(data)
         }
         fetchImages()
-    }, [])
+    }, [])*/
 
     useEffect(() => {
       // Simuler un chargement asynchrone
