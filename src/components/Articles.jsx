@@ -19,7 +19,7 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
   return (
     <>
     <div>
-      <div class="w-full h-auto mx-[auto] my-[20px] rounded-lg group relative items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 [@media(max-width:800px)]:my-[8px] [@media(max-width:1200px)]:my-[10px]">
+      <div class="w-full h-auto mx-[auto] my-[16px] rounded-[25px] group relative items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 [@media(max-width:800px)]:my-[8px] [@media(max-width:1200px)]:my-[10px]">
         <div class="">
           <img 
             class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"
@@ -31,13 +31,13 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
         <div class="px-5 py-4 absolute inset-0 flex flex-col justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <div className='flex items-center'>
             <img
-                src={user.profile_image.medium}
+                src={user.profile_image.small}
                 alt={user.username}
                 className="rounded-full mr-2 w-10 md:w-auto"
             />
             <ul>
-              <li className="text-white font-bold">{user.name}</li>
-              <li className="text-sm text-white opacity-80">
+              <li className="text-[10pt] text-white font-bold">{user.name}</li>
+              <li className="text-[8pt] text-white opacity-80">
                 {format(new Date(created_at), "dd MMMM yyyy")}
               </li>
             </ul>
