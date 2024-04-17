@@ -9,31 +9,6 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
   const [isOpenPopup, setIsOpenPopup] = useState(false);
   const [valeurRecuperee, setValeurRecuperee] = useState("");
 
-  const handleDownload = async () => {
-    try {
-      // Récupérer l'image depuis son URL
-      const response = await fetch(urls.full);
-      const blob = await response.blob();
-
-      // Créer une URL pour le blob
-      const url = window.URL.createObjectURL(new Blob([blob]));
-
-      // Créer un élément <a> pour le téléchargement
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', imageName);
-
-      // Simuler un clic sur le lien pour démarrer le téléchargement
-      document.body.appendChild(link);
-      link.click();
-
-      // Nettoyer
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error('Erreur lors du téléchargement de l\'image:', error);
-    }
-  };
-
   const handleClick = (valeur) => {
     setValeurRecuperee(valeur); // Mettre à jour l'état avec la valeur récupérée
     document.getElementById('my_modal_2').showModal(); // Afficher le dialogue
@@ -44,7 +19,7 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
   return (
     <>
     <div>
-      <div class="w-full h-auto mx-[auto] my-[4%] rounded-lg group relative items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+      <div class="w-full h-auto mx-[auto] my-[20px] rounded-lg group relative items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 [@media(max-width:800px)]:my-[8px] [@media(max-width:1200px)]:my-[10px]">
         <div class="">
           <img 
             class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"

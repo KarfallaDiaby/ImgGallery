@@ -35,7 +35,7 @@ export default function GetImg({images}) {
           </div>
           
         ) : (
-            <ul className="[column-count:4] gap-x-[20px][@media(max-width:1200px)]: [@media(max-width:1200px)]:[column-count:3] [@media(max-width:1200px)]:gap-x-[20px] [@media(max-width:800px)]: [@media(max-width:800px)]:[column-count:2] [@media(max-width:800px)]:gap-x-[20px] [@media(max-width:600px)]: [@media(max-width:600px)]:[column-count:1]">
+            <ul className="[@media(min-width:2000px)]:px-[300px] [column-count:4] gap-x-[20px] [@media(min-width:1200px)]:px-2 [@media(max-width:1200px)]:[column-count:3] [@media(max-width:1200px)]:px-4 [@media(max-width:1200px)]:gap-x-[10px] [@media(max-width:800px)]: [@media(max-width:800px)]:[column-count:2] [@media(max-width:800px)]:gap-x-[10px] [@media(max-width:800px)]:px-2 [@media(max-width:600px)]: [@media(max-width:600px)]:[column-count:1]">
                 <li className="">
                     {images.map((image) => (
                     <Articles key={image.id} {...image} />

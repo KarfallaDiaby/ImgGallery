@@ -2,7 +2,7 @@ import './App.css'
 import GetImg from './components/GetImg'
 import NavBar from './components/NavBar'
 import SharePopup from './components/SharePopup'
-import Footer from './components/Footer/Footer'
+import Footer from './components/Footer'
 
 function App() {
 
