@@ -83,7 +83,7 @@ export default function NavBar() {
     <>
         <nav className='bg-white dark:bg-black transition-all duration-1000 ease-out'>
             <div className='w-full flex justify-between items-center  text-[#939393] py-2 pl-5 border-b border-[#939393]'>
-                <div className='flex items-center w-[72%] md:w-[63%] [@media(max-width:1000px)]:w-[100%]'>
+                <div className='flex items-center w-[100%] '>
                     <img className='w-12 [@media(max-width:1000px)]:w-10' src={theme === 'dark' ? LogoD : Logo} alt="" />
                     <div className='w-full flex items-center ml-6 bg-[#E9E9E9] py-2 px-4 rounded-full dark:bg-[#c7c7c7]'>
                         <span className='text-[16pt] mr-3'><ion-icon name="search-outline"></ion-icon></span>
@@ -92,17 +92,17 @@ export default function NavBar() {
                 </div>
                 <ul className='flex justify-center items-center text-[11pt] [@media(max-width:1000px)]:hidden'>
                     <div className='flex justify-center items-center'>
-                        <li className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'><ion-icon name="add-circle-outline"></ion-icon></li>
-                        <li className='mx-1 py-2 px-4 rounded-full cursor-pointer hover:bg-[#E9E9E9]'>A propos</li>
                         <li onClick={handleThemeSwitch}>
-                        {
-                            theme === 'dark' 
-                            ? <span className='mx-1  text-white text-[14pt] py-2 px-4 rounded-full cursor-pointer transition-all duration-[3s] ease-out'><ion-icon name="sunny"></ion-icon></span>
-                            : <span className='mx-1  text-black text-[14pt] py-2 px-4 rounded-full cursor-pointer transition-all duration-[3s] ease-out'><ion-icon name="moon"></ion-icon></span>
-                        }  
+                            {
+                                theme === 'dark' 
+                                ? <span className='mx-2  text-white text-[14pt] px-4 rounded-full cursor-pointer transition-all duration-[3s] ease-out'><ion-icon name="sunny"></ion-icon></span>
+                                : <span className='mx-2  text-black text-[14pt] px-4 rounded-full cursor-pointer transition-all duration-[3s] ease-out'><ion-icon name="moon"></ion-icon></span>
+                            }  
                         </li>
+                        <li className='mx-2 px-4 text-[18pt] rounded-full cursor-pointer hover:text-[#77B0AA]'><ion-icon name="add-circle-outline"></ion-icon></li>
+                        <li className='mx-2 px-4 text-[18pt] rounded-full cursor-pointer hover:text-[#77B0AA]'><ion-icon name="log-out-outline"></ion-icon></li>
                     </div>
-                    <li className='ml-2  px-7 py-3 border-l border-[#939393] cursor-pointer'>Connexion</li>
+                    <li className='ml-2  px-7 py-3 border-l border-[#939393] cursor-pointer hover:text-[#77B0AA]'>Connexion</li>
                 </ul>
                 <span className='hidden text-5xl mx-5 text-black dark:hidden [@media(max-width:1000px)]:inline'><ion-icon name="menu-outline"></ion-icon></span>
             </div>
@@ -120,9 +120,9 @@ export default function NavBar() {
 
         <GetImg images={img}/>
 
-        <div className='flex justify-center items-center'>
-        {page > 1 && (<button onClick={() => setPage(page - 1)}>Précedant</button>)}
-        {page < totalPages && (<button onClick={() => setPage(page + 1)}>Suivant</button>)}
+        <div className='flex justify-center items-center py-12 dark:bg-black dark:text-white'>
+        {page > 1 && (<button className='mx-4 flex justify-center items-center bg-[#77B0AA] rounded-lg p-4 hover:dark:bg-[#94dbd4]' onClick={() => setPage(page - 1)}><ion-icon name="chevron-back-outline"></ion-icon>Précedant</button>)}
+        {page < totalPages && (<button className='mx-4 flex justify-center items-center bg-[#77B0AA] rounded-lg p-4 hover:dark:bg-[#94dbd4]' onClick={() => setPage(page + 1)}>Suivant<ion-icon name="chevron-forward-outline"></ion-icon></button>)}
         </div>
     </>
   )

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function SharePopup({valeur}) {
 
-    console.log(valeur)
+  console.log(valeur)
+
 
   return (
     <dialog id="my_modal_2" className='rounded-lg p-6'>

@@ -19,7 +19,7 @@ export default function Articles({ id, urls, user, created_at, likes, links }) {
   return (
     <>
     <div>
-      <div class="w-full h-auto mx-[auto] my-[16px] rounded-[25px] group relative items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 [@media(max-width:800px)]:my-[8px] [@media(max-width:1200px)]:my-[10px]">
+      <div class="w-full h-auto mx-[auto] mb-[20px] rounded-[25px] group relative items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30 [@media(max-width:800px)]:mb-12px] [@media(max-width:1200px)]:mb-[14px]">
         <div class="">
           <img 
             class="h-full w-full object-cover transition-transform duration-500 group-hover:rotate-3 group-hover:scale-125"

@@ -31,7 +31,7 @@ export default function GetImg({images}) {
     <>  
       <div className='bg-white dark:bg-black transition-all duration-1000 ease-out'>
         {loading ? (
-            <div className='w-full flex justify-center'>
+            <div className='w-full flex justify-center dark:bg-black'>
               <div class="rounded-md h-12 w-12 border-4 border-t-4 border-[#77B0AA] animate-spin absolute"></div>
             </div>
             
